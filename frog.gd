@@ -52,7 +52,7 @@ func _on_player_collision_body_entered(body: Node2D) -> void:
 			death()
 			
 func death():
-	Game.Gold += 5
+	Game.Gold += 3
 	Utils.saveGame()
 	chase = false
 	get_node("AnimatedSprite2D").play("Death")

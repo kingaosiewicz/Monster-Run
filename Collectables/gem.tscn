@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c2280ula4mck8"]
+
+[ext_resource type="Texture2D" uid="uid://ckda8w8aq1m1w" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-1.png" id="1_krkyx"]
+[ext_resource type="Texture2D" uid="uid://dkbd565xhspmx" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-2.png" id="2_xyxyv"]
+[ext_resource type="Texture2D" uid="uid://btcbgfcfxxfa6" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-3.png" id="3_lpcv1"]
+[ext_resource type="Texture2D" uid="uid://d1n0sn0q04boc" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-4.png" id="4_ldky6"]
+[ext_resource type="Texture2D" uid="uid://dgo0arw3wi0yc" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-5.png" id="5_jqbgs"]
+
+[sub_resource type="GDScript" id="GDScript_krkyx"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\":
+		Game.Gold += 5
+		var tween = get_tree().create_tween()
+		var tween1 = get_tree().create_tween()
+		tween.tween_property(self, \"position\", position - Vector2(0,35), 0.4)
+		tween1.tween_property(self, \"modulate:a\", 0, 0.2)
+		tween.tween_callback(queue_free)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdbqy"]
+radius = 6.0827627
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61qgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_krkyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyxyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lpcv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ldky6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jqbgs")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Gem" type="Area2D" unique_id=1322419952]
+script = SubResource("GDScript_krkyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2015627574]
+shape = SubResource("CircleShape2D_rdbqy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133986288]
+sprite_frames = SubResource("SpriteFrames_61qgc")
+animation = &"Idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

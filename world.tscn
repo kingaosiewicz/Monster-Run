@@ -15,6 +15,7 @@ texture = ExtResource("1_aqk2v")
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:1/0 = 0
 10:1/0 = 0
 11:1/0 = 0
@@ -176,6 +177,33 @@ func _process(_delta: float) -> void:
 	text = \"Gold: \" + str(Game.Gold)
 "
 
+[sub_resource type="GDScript" id="GDScript_pkg7o"]
+script/source = "extends Node2D
+
+var Cherry = preload(\"res://Collectables/cherry.tscn\")
+var Gem = preload(\"res://Collectables/gem.tscn\")
+
+var rng = RandomNumberGenerator.new()
+
+func _on_timer_timeout() -> void:
+	var chance = rng.randf() 
+	
+	if chance < 0.2:
+		return
+
+	var item
+	if chance > 0.8: 
+		item = Gem.instantiate()
+		item.position = Vector2(rng.randi_range(20, 1000), rng.randi_range(230, 250))
+	else:
+		item = Cherry.instantiate()
+		item.position = Vector2(rng.randi_range(20, 1000), rng.randi_range(260, 290))
+
+	add_child(item)
+	
+	$Timer.wait_time = rng.randf_range(0.5, 2.0)
+"
+
 [node name="World" type="Node2D" unique_id=1652946520]
 
 [node name="TileMap" type="TileMap" parent="." unique_id=2042380496]
@@ -199,7 +227,7 @@ metadata/_edit_lock_ = true
 [node name="Player" type="Node2D" parent="." unique_id=626370439]
 
 [node name="Player" parent="Player" unique_id=1044194140 instance=ExtResource("1_f3sb7")]
-position = Vector2(512, 168)
+position = Vector2(63, 195)
 
 [node name="Mobs" type="Node2D" parent="." unique_id=74791002]
 
@@ -213,7 +241,7 @@ position = Vector2(1456, 96)
 position = Vector2(952, 176)
 
 [node name="Frog4" parent="Mobs" unique_id=538726160 instance=ExtResource("5_036b0")]
-position = Vector2(736, 152)
+position = Vector2(329, 234)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=916280145]
 
@@ -235,3 +263,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "HP"
 script = SubResource("GDScript_dwbse")
+
+[node name="Collectables" type="Node2D" parent="." unique_id=1802235486]
+script = SubResource("GDScript_pkg7o")
+
+[node name="Timer" type="Timer" parent="Collectables" unique_id=489840282]
+autostart = true
+
+[connection signal="timeout" from="Collectables/Timer" to="Collectables" method="_on_timer_timeout"]
