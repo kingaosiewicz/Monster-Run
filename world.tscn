@@ -261,7 +261,7 @@ offset_right = 56.0
 offset_bottom = 66.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "HP"
+text = "Gold"
 script = SubResource("GDScript_dwbse")
 
 [node name="Collectables" type="Node2D" parent="." unique_id=1802235486]

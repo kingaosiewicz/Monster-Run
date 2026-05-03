@@ -32,14 +32,12 @@ func _physics_process(delta: float) -> void:
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		chase = true
-		# Skoro sygnał wykrył gracza, od razu zapisujemy go do zmiennej!
 		player = body 
 
 
 func _on_player_detection_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		chase = false
-		# Gracz uciekł, żaba go "zapomina"
 		player = null
 
 func _on_player_death_body_entered(body: Node2D) -> void:

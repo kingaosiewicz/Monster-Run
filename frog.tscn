@@ -197,10 +197,9 @@ shape = SubResource("RectangleShape2D_j38ec")
 position = Vector2(1.75, -11)
 scale = Vector2(0.98571426, 1)
 sprite_frames = SubResource("SpriteFrames_aumaf")
-animation = &"Idle"
+animation = &"Jump"
 
 [node name="PlayerDetection" type="Area2D" parent="." unique_id=885006712]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=553077660]
 position = Vector2(1, -5)
