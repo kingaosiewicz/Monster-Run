@@ -62,4 +62,4 @@ func death():
 	await get_node("AnimatedSprite2D").animation_finished
 	self.queue_free()
 
-		
+		#moze zrobimy możliwosc respawnu zaby, albo damy ta mozliwosc innemu wrogowi na trudniejszym poziomie?

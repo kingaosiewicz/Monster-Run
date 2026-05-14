@@ -185,23 +185,50 @@ var Gem = preload(\"res://Collectables/gem.tscn\")
 
 var rng = RandomNumberGenerator.new()
 
+# DODANE: Referencja do gracza, żebyśmy wiedzieli, gdzie on aktualnie jest
+@onready var player = $\"../Player/Player\"
+
 func _on_timer_timeout() -> void:
+	# Od razu losujemy nowy czas, tak jak miałaś
+	$Timer.wait_time = rng.randf_range(0.5, 2.0)
+	
+	# DODANE: Jeśli liska nie ma (np. zginął), przerywamy funkcję
+	if player == null or player.is_dead:
+		return
+
 	var chance = rng.randf() 
 	
 	if chance < 0.2:
 		return
 
 	var item
+	var base_y = 0.0 # Zmienna pomocnicza do trzymania Twoich oryginalnych wysokości
+	
 	if chance > 0.8: 
 		item = Gem.instantiate()
-		item.position = Vector2(rng.randi_range(20, 1000), rng.randi_range(230, 250))
+		base_y = rng.randi_range(230, 250)
 	else:
 		item = Cherry.instantiate()
-		item.position = Vector2(rng.randi_range(20, 1000), rng.randi_range(260, 290))
+		base_y = rng.randi_range(260, 290)
+
+	# ZMIENIONE: Losujemy X relatywnie do gracza (np. od 300 do 800 pikseli W PRAWO od niego)
+	# zamiast losować sztywno na mapie od 20 do 1000.
+	var spawn_x = player.global_position.x + rng.randf_range(300.0, 800.0)
+	
+	# DODANE: Obliczamy pozycję Y korzystając z funkcji przygotowanej na przyszłość
+	var spawn_y = _get_future_y_position(spawn_x, base_y)
+
+	# Używamy global_position, bo spawn_x też jest obliczone na bazie global_position liska
+	item.global_position = Vector2(spawn_x, spawn_y)
 
 	add_child(item)
-	
-	$Timer.wait_time = rng.randf_range(0.5, 2.0)
+
+# --- MIEJSCE NA PRZYSZŁOŚĆ: LOGIKA KŁADEK ---
+func _get_future_y_position(x_pos: float, original_y: float) -> float:
+	# Na ten moment po prostu oddajemy z powrotem Twój wylosowany zakres (230-290).
+	# W przyszłości dodamy tu kod, który najpierw sprawdzi, czy na pozycji 'x_pos'
+	# jest jakaś platforma. Jeśli tak, zmniejszymy ten Y, żeby gem/wisienka leżały na niej!
+	return original_y
 "
 
 [node name="World" type="Node2D" unique_id=1652946520]
