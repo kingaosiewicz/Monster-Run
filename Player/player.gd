@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
+const ICE_SPEED = 550.0 # DODANE: Prędkość na lodzie (możesz ją dowolnie zwiększyć)
 const JUMP_VELOCITY = -400.0
 var knockback_power = 300.0
 
@@ -28,6 +29,16 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
 	
+	# --- 1. SPRAWDZANIE CZY STOIMY NA LODZIE ---
+	var on_ice = false
+	if is_on_floor():
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider().name == "lod":
+				on_ice = true
+				# To wyświetli się na dole w konsoli, jeśli lisek faktycznie dotyka lodu!
+				print("Lisek jest na lodzie!") 
+
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
 	if direction == -1:
@@ -35,14 +46,30 @@ func _physics_process(delta: float) -> void:
 	elif direction == 1:
 		get_node("AnimatedSprite2D").flip_h = false
 		
-	if direction:
-		velocity.x = direction * SPEED
-		if velocity.y == 0:
-			animation.play("Run")
+	# --- 2. RUCH LISKA (zależnie od nawierzchni) ---
+	if on_ice:
+		# LIS JEST NA LODZIE
+		if direction:
+			# ZMIANA: Używamy ICE_SPEED. Dałem tu wartość 10.0 zamiast 5.0, 
+			# żeby lisek miał szansę szybko dobić do tej wyższej prędkości!
+			velocity.x = move_toward(velocity.x, direction * ICE_SPEED, 10.0) 
+			if velocity.y == 0:
+				animation.play("Run")
+		else:
+			# Hamowanie zostaje bez zmian (prawie w ogóle się nie zatrzymuje)
+			velocity.x = move_toward(velocity.x, 0, 0.5) 
+			if velocity.y == 0:
+				animation.play("Idle")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y == 0:
-			animation.play("Idle")
+		# LIS JEST NA ZIEMI (Standardowy ruch)
+		if direction:
+			velocity.x = direction * SPEED
+			if velocity.y == 0:
+				animation.play("Run")
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED) 
+			if velocity.y == 0:
+				animation.play("Idle")
 	
 	if velocity.y > 0:
 		animation.play("Fall")
