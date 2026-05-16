@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 			if collider != null:
 				var collider_name = collider.name
 				
-				if collider_name == "Lod":
+				if collider_name == "lod":
 					on_ice = true
 				elif collider_name == "piasek":
 					on_sand = true
