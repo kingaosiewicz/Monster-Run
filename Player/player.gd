@@ -86,4 +86,4 @@ func die(knockback_dir: Vector2):
 	await get_tree().create_timer(2.0).timeout
 	
 	Game.playerHP = 10 
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://level-scenes/main.tscn")

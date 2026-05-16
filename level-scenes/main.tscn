@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cv3r4wu5l0evh"]
 
-[ext_resource type="Script" uid="uid://cjqhk2w7rwp3p" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cjqhk2w7rwp3p" path="res://main.gd" id="1_fdf5a"]
+[ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_gr0vx"]
 
 [node name="Main" type="Node2D" unique_id=184762086]
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_fdf5a")
 
 [node name="Play" type="Button" parent="." unique_id=1443625055]
 offset_left = 492.0
@@ -20,7 +20,7 @@ offset_right = 647.0
 offset_bottom = 419.0
 text = "Quit"
 
-[node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_0xm2m")]
+[node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_gr0vx")]
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
