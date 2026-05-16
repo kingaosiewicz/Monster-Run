@@ -1,16 +1,25 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const ICE_SPEED = 550.0 # DODANE: Prędkość na lodzie (możesz ją dowolnie zwiększyć)
+const ICE_SPEED = 550.0
+const SAND_SPEED = 100.0 # DODANE: Bardzo wolna prędkość na piasku
 const JUMP_VELOCITY = -400.0
 var knockback_power = 300.0
 
 var is_hurt = false
-var is_dead = false # NOWA ZMIENNA
+var is_dead = false 
 
 @onready var animation = get_node("AnimationPlayer")
 
 func _physics_process(delta: float) -> void:
+	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
+	# Jeśli lisek spadnie poniżej 800 pikseli na osi Y (możesz zwiększyć tę wartość, 
+	# jeśli Twoja mapa jest głębsza), ginie na miejscu bez odrzutu.
+	if global_position.y > 400 and not is_dead:
+		Game.playerHP = 0
+		die(Vector2.ZERO) # Vector2.ZERO = śmierć w miejscu
+		return
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -29,15 +38,23 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
 	
-	# --- 1. SPRAWDZANIE CZY STOIMY NA LODZIE ---
+	# --- 1. SPRAWDZANIE NAWIERZCHNI (Lód i Piasek) ---
 	var on_ice = false
+	var on_sand = false
+	
 	if is_on_floor():
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
-			if collision.get_collider().name == "lod":
-				on_ice = true
-				# To wyświetli się na dole w konsoli, jeśli lisek faktycznie dotyka lodu!
-				print("Lisek jest na lodzie!") 
+			var collider = collision.get_collider() # Zapisujemy obiekt, z którym się zderzyliśmy
+			
+			# ZABEZPIECZENIE: Upewniamy się, że obiekt istnieje, zanim sprawdzimy jego nazwę!
+			if collider != null:
+				var collider_name = collider.name
+				
+				if collider_name == "lod":
+					on_ice = true
+				elif collider_name == "piasek":
+					on_sand = true
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
@@ -50,14 +67,21 @@ func _physics_process(delta: float) -> void:
 	if on_ice:
 		# LIS JEST NA LODZIE
 		if direction:
-			# ZMIANA: Używamy ICE_SPEED. Dałem tu wartość 10.0 zamiast 5.0, 
-			# żeby lisek miał szansę szybko dobić do tej wyższej prędkości!
 			velocity.x = move_toward(velocity.x, direction * ICE_SPEED, 10.0) 
 			if velocity.y == 0:
 				animation.play("Run")
 		else:
-			# Hamowanie zostaje bez zmian (prawie w ogóle się nie zatrzymuje)
 			velocity.x = move_toward(velocity.x, 0, 0.5) 
+			if velocity.y == 0:
+				animation.play("Idle")
+	elif on_sand:
+		# LIS JEST NA PIASKU
+		if direction:
+			velocity.x = direction * SAND_SPEED # Ograniczona, powolna prędkość
+			if velocity.y == 0:
+				animation.play("Run")
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED) # Zwykłe zatrzymanie
 			if velocity.y == 0:
 				animation.play("Idle")
 	else:
@@ -78,26 +102,23 @@ func _physics_process(delta: float) -> void:
 
 # ZMIENIONA FUNKCJA OTRZYMYWANIA OBRAŻEŃ
 func take_damage(knockback_dir: Vector2):
-	if is_dead: return # Nie dostajemy obrażeń, jeśli już nie żyjemy
+	if is_dead: return 
 	
-	# 1. SPRAWDZAMY CZY TO ŚMIERTELNY CIOS (Zanim zrobimy cokolwiek innego)
 	if Game.playerHP <= 0:
-		die(knockback_dir) # Od razu wywołujemy śmierć z kierunkiem uderzenia
-		return # Przerywamy czytanie reszty tej funkcji!
+		die(knockback_dir) 
+		return 
 	
-	# 2. ZWYKŁE OBRYWANIE (Jeśli lisek ma jeszcze HP)
 	is_hurt = true
 	animation.play("Hurt")
 	
 	velocity.y = -250.0 
 	velocity.x = knockback_dir.x * knockback_power
 	
-	# Czekamy na koniec animacji bólu
 	await animation.animation_finished
 	is_hurt = false
 
 
-# ZMIENIONA FUNKCJA ŚMIERCI (Teraz przyjmuje wektor uderzenia)
+# ZMIENIONA FUNKCJA ŚMIERCI
 func die(knockback_dir: Vector2):
 	is_dead = true
 	
@@ -106,9 +127,14 @@ func die(knockback_dir: Vector2):
 	
 	get_node("CollisionShape2D").set_deferred("disabled", true)
 	
-	# Śmiertelny odrzut od żaby - lisek leci wyżej (-400) i w tył!
-	velocity.y = -400.0 
-	velocity.x = knockback_dir.x * knockback_power
+	# Jeśli wektor uderzenia to ZERO (czyli woda), lisek po prostu opada w dół
+	if knockback_dir == Vector2.ZERO:
+		velocity.y = 100.0
+		velocity.x = 0
+	else:
+		# Śmiertelny odrzut od żaby
+		velocity.y = -400.0 
+		velocity.x = knockback_dir.x * knockback_power
 	
 	await get_tree().create_timer(2.0).timeout
 	
