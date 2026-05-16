@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const ICE_SPEED = 550.0 # DODANE: Prędkość na lodzie (możesz ją dowolnie zwiększyć)
+const SAND_SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var knockback_power = 300.0
 
