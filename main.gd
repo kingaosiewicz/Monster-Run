@@ -8,12 +8,9 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://level-scenes/world.tscn")
+	get_tree().change_scene_to_file("res://level-scenes/LevelSelect.tscn")
 
-
-# TODO: Zrobić gałęzie na Githubie
 # TODO: Dodać do mapy przeszkody
-# TODO: Jeśli wejdziemy w potwora i odejmie nam HP to niech ten powtór nie ginie tylko dalej jest, a my zostaniemy odrzuceni troche do tyłu jak w Mario
 # TODO: Zrobić kolejne mapy jak ktoś przejdzie poziom i żeby zapisywało, które poziomy już przeszedłeś. Można potem dodać konta graczy? W kodzie jest stworzona
 # możliwość zapisywania HP i Golda, ale jeśli chcemy zrobić w formie poziomów to trzeba będzie zmienić logikę.
 # TODO: Fajnie jakby obiekty do zbierania tworzyły się przed naszym liskiem, żeby ogólnie sens gry był taki, że idziemy do przodu, a nie do tyłu po itemy
