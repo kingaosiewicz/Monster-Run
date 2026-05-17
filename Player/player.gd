@@ -10,6 +10,7 @@ var is_hurt = false
 var is_dead = false 
 
 @onready var animation = get_node("AnimationPlayer")
+@onready var game_over_screen = $CanvasLayer
 
 func _physics_process(delta: float) -> void:
 	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
@@ -126,6 +127,9 @@ func take_damage(knockback_dir: Vector2):
 func die(knockback_dir: Vector2):
 	is_dead = true
 	animation.play("Death")
+	
+	# TA LINIJKA POKAZUJE NAPIS GAME OVER:
+	game_over_screen.visible = true
 	
 	# Jeśli wektor uderzenia to ZERO (czyli woda), lisek po prostu opada w dół
 	if knockback_dir == Vector2.ZERO:
