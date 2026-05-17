@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b4t3rkgfmm4dw"]
+
+[ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_8k1ke"]
+
+[node name="Main" type="Node2D" unique_id=184762086]
+
+[node name="Play" type="Button" parent="." unique_id=1443625055]
+offset_left = 492.0
+offset_top = 164.0
+offset_right = 648.0
+offset_bottom = 245.0
+text = "Level 1"
+
+[node name="Quit" type="Button" parent="." unique_id=1621476591]
+offset_left = 491.0
+offset_top = 338.0
+offset_right = 647.0
+offset_bottom = 419.0
+text = "Return to Menu"
+
+[node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_8k1ke")]
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
