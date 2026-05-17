@@ -10,6 +10,7 @@ var is_hurt = false
 var is_dead = false 
 
 @onready var animation = get_node("AnimationPlayer")
+@onready var game_over_screen = $CanvasLayer
 
 func _physics_process(delta: float) -> void:
 	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
@@ -24,8 +25,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# JEŚLI NIE ŻYJE: pozwalamy mu tylko spadać, ignorujemy resztę
 	if is_dead:
+		if is_on_floor():
+			# Pozwala liskowi odlecieć przy uderzeniu, ale zatrzymuje go po lądowaniu.
+			velocity.x = move_toward(velocity.x, 0, 2.0)
+			
 		move_and_slide()
 		return
 
@@ -102,7 +106,8 @@ func _physics_process(delta: float) -> void:
 
 # ZMIENIONA FUNKCJA OTRZYMYWANIA OBRAŻEŃ
 func take_damage(knockback_dir: Vector2):
-	if is_dead: return 
+	if is_dead or is_hurt: 
+		return 
 	
 	if Game.playerHP <= 0:
 		die(knockback_dir) 
@@ -114,29 +119,28 @@ func take_damage(knockback_dir: Vector2):
 	velocity.y = -250.0 
 	velocity.x = knockback_dir.x * knockback_power
 	
-	await animation.animation_finished
+	await get_tree().create_timer(0.6).timeout
 	is_hurt = false
 
 
 # ZMIENIONA FUNKCJA ŚMIERCI
 func die(knockback_dir: Vector2):
 	is_dead = true
+	animation.play("Death")
 	
-	if animation.has_animation("Death"):
-		animation.play("Death")
-	
-	get_node("CollisionShape2D").set_deferred("disabled", true)
+	# TA LINIJKA POKAZUJE NAPIS GAME OVER:
+	game_over_screen.visible = true
 	
 	# Jeśli wektor uderzenia to ZERO (czyli woda), lisek po prostu opada w dół
 	if knockback_dir == Vector2.ZERO:
-		velocity.y = 100.0
+		get_node("CollisionShape2D").set_deferred("disabled", true)
+		velocity.y = 1.0 # powolne opadanie w dół
 		velocity.x = 0
 	else:
-		# Śmiertelny odrzut od żaby
-		velocity.y = -400.0 
-		velocity.x = knockback_dir.x * knockback_power
+		velocity.y = -200.0 
+		velocity.x = knockback_dir.x * (knockback_power / 2.0)
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	
 	Game.playerHP = 10 
 	get_tree().change_scene_to_file("res://level-scenes/main.tscn")
