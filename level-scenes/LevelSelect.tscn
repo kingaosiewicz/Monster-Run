@@ -52,23 +52,23 @@ offset_bottom = 249.0
 text = "Level 3"
 
 [node name="Level4" type="Button" parent="." unique_id=1080688072]
-offset_left = 592.0
-offset_top = 168.0
-offset_right = 748.0
-offset_bottom = 249.0
+offset_left = 584.0
+offset_top = 169.0
+offset_right = 740.0
+offset_bottom = 250.0
 text = "Level 4"
 
 [node name="Level5" type="Button" parent="." unique_id=1518850562]
-offset_left = 784.0
-offset_top = 168.0
-offset_right = 940.0
-offset_bottom = 249.0
+offset_left = 766.0
+offset_top = 170.0
+offset_right = 922.0
+offset_bottom = 251.0
 text = "Level 5"
 
 [node name="Level6" type="Button" parent="." unique_id=1355803910]
-offset_left = 976.0
+offset_left = 947.0
 offset_top = 168.0
-offset_right = 1132.0
+offset_right = 1103.0
 offset_bottom = 249.0
 text = "Level 6"
 
