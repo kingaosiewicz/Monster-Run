@@ -16,6 +16,13 @@ func _physics_process(delta: float) -> void:
 	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
 	# Jeśli lisek spadnie poniżej 800 pikseli na osi Y (możesz zwiększyć tę wartość, 
 	# jeśli Twoja mapa jest głębsza), ginie na miejscu bez odrzutu.
+	
+	# WYJŚCIE DO MENU (Klawisz ESC)
+	if Input.is_action_just_pressed("ui_cancel"):
+		# Upewnij się, że ścieżka poniżej prowadzi do Twojego menu głównego!
+		get_tree().change_scene_to_file("res://level-scenes/main.tscn")
+		
+		
 	if global_position.y > 400 and not is_dead:
 		Game.playerHP = 0
 		die(Vector2.ZERO) # Vector2.ZERO = śmierć w miejscu
