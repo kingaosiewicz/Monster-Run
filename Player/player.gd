@@ -5,6 +5,7 @@ const ICE_SPEED = 550.0
 const SAND_SPEED = 100.0 # DODANE: Bardzo wolna prędkość na piasku
 const JUMP_VELOCITY = -400.0
 var knockback_power = 300.0
+var level_time: float = 0.0
 
 var is_hurt = false
 var is_dead = false 
@@ -16,6 +17,8 @@ func _physics_process(delta: float) -> void:
 	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
 	# Jeśli lisek spadnie poniżej 800 pikseli na osi Y (możesz zwiększyć tę wartość, 
 	# jeśli Twoja mapa jest głębsza), ginie na miejscu bez odrzutu.
+	if not is_dead and not is_hurt:
+		level_time += delta # Stoper nalicza sekundy
 	
 	# WYJŚCIE DO MENU (Klawisz ESC)
 	if Input.is_action_just_pressed("ui_cancel"):
