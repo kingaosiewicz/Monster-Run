@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/time_for_adventure.mp3-8b027750f2e31e9317157f
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

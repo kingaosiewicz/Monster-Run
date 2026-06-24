@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjqhk2w7rwp3p" path="res://main.gd" id="1_fdf5a"]
 [ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_gr0vx"]
+[ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="3_gr0vx"]
 
 [node name="Main" type="Node2D" unique_id=184762086]
 script = ExtResource("1_fdf5a")
@@ -21,6 +22,11 @@ offset_bottom = 419.0
 text = "Quit"
 
 [node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_gr0vx")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=428354208]
+stream = ExtResource("3_gr0vx")
+volume_db = -11.05
+autoplay = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

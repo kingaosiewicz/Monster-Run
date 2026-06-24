@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bgffhe4plpaes" path="res://frog.gd" id="1_byod8"]
 [ext_resource type="Texture2D" uid="uid://cqyh0glij4tnj" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland FX/Spritesheets/enemy-deadth.png" id="1_slgur"]
 [ext_resource type="Texture2D" uid="uid://direx4xh0xsb2" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/frog/Spritesheets/frog-jump.png" id="2_slgur"]
+[ext_resource type="AudioStream" uid="uid://dj7ekgomi4wli" path="res://weronika-assets/sounds/explosion.wav" id="5_j38ec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j38ec"]
 size = Vector2(18, 15.5)
@@ -216,6 +217,9 @@ shape = SubResource("RectangleShape2D_byod8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision" unique_id=1263004755]
 position = Vector2(0.5, -3.5)
 shape = SubResource("RectangleShape2D_5cyyp")
+
+[node name="DzwiekZgniatania" type="AudioStreamPlayer" parent="." unique_id=1041054397]
+stream = ExtResource("5_j38ec")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

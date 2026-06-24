@@ -58,7 +58,10 @@ func death():
 	Game.Gold += 3
 	Utils.saveGame()
 	chase = false
+	velocity.x = 0 
+	get_node("CollisionShape2D").set_deferred("disabled", true)
 	get_node("AnimatedSprite2D").play("Death")
+	$DzwiekZgniatania.play()
 	await get_node("AnimatedSprite2D").animation_finished
 	self.queue_free()
 

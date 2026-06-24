@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddppffjmijan3" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/cherry/cherry-5.png" id="5_y0r8c"]
 [ext_resource type="Texture2D" uid="uid://dc0lamc0511i1" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/cherry/cherry-6.png" id="6_wfiam"]
 [ext_resource type="Texture2D" uid="uid://bu4cps3q0yvq8" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/cherry/cherry-7.png" id="7_hefjk"]
+[ext_resource type="AudioStream" uid="uid://cawmjttntwoi2" path="res://weronika-assets/sounds/coin.wav" id="8_yr8cn"]
 
 [sub_resource type="GDScript" id="GDScript_57ql3"]
 script/source = "extends Area2D
@@ -14,7 +15,9 @@ script/source = "extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == \"Player\":
+		set_deferred(\"monitoring\", false)
 		Game.playerHP += 1
+		$DzwiekZbieraniaWisienka.play()
 		var tween = get_tree().create_tween()
 		var tween1 = get_tree().create_tween()
 		tween.tween_property(self, \"position\", position - Vector2(0,35), 0.4)
@@ -66,5 +69,8 @@ sprite_frames = SubResource("SpriteFrames_8415w")
 animation = &"Idle"
 autoplay = "Idle"
 metadata/_edit_lock_ = true
+
+[node name="DzwiekZbieraniaWisienka" type="AudioStreamPlayer" parent="." unique_id=1711764793]
+stream = ExtResource("8_yr8cn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

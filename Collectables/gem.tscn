@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btcbgfcfxxfa6" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-3.png" id="3_lpcv1"]
 [ext_resource type="Texture2D" uid="uid://d1n0sn0q04boc" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-4.png" id="4_ldky6"]
 [ext_resource type="Texture2D" uid="uid://dgo0arw3wi0yc" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-5.png" id="5_jqbgs"]
+[ext_resource type="AudioStream" uid="uid://d2wrg1pqd35um" path="res://weronika-assets/sounds/power_up.wav" id="6_xyxyv"]
 
 [sub_resource type="GDScript" id="GDScript_krkyx"]
 script/source = "extends Area2D
@@ -12,7 +13,9 @@ script/source = "extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == \"Player\":
+		set_deferred(\"monitoring\", false)
 		Game.Gold += 5
+		$DzwiekZbieraniaDiament.play()
 		var tween = get_tree().create_tween()
 		var tween1 = get_tree().create_tween()
 		tween.tween_property(self, \"position\", position - Vector2(0,35), 0.4)
@@ -55,5 +58,8 @@ shape = SubResource("CircleShape2D_rdbqy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133986288]
 sprite_frames = SubResource("SpriteFrames_61qgc")
 animation = &"Idle"
+
+[node name="DzwiekZbieraniaDiament" type="AudioStreamPlayer" parent="." unique_id=661908281]
+stream = ExtResource("6_xyxyv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
