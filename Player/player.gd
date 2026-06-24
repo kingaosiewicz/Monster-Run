@@ -20,6 +20,12 @@ func _physics_process(delta: float) -> void:
 	if not is_dead and not is_hurt:
 		level_time += delta # Stoper nalicza sekundy
 	
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		animation.play("Jump")
+		$DzwiekSkoku.play() 
+	
 	# WYJŚCIE DO MENU (Klawisz ESC)
 	if Input.is_action_just_pressed("ui_cancel"):
 		# Upewnij się, że ścieżka poniżej prowadzi do Twojego menu głównego!
@@ -118,6 +124,8 @@ func _physics_process(delta: float) -> void:
 func take_damage(knockback_dir: Vector2):
 	if is_dead or is_hurt: 
 		return 
+		
+	$DzwiekBolu.play()
 	
 	if Game.playerHP <= 0:
 		die(knockback_dir) 
