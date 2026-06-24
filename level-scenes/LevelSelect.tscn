@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4t3rkgfmm4dw"]
 
 [ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_8k1ke"]
+[ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="2_riwn1"]
 
 [sub_resource type="GDScript" id="GDScript_oaddd"]
 script/source = "extends Node2D
@@ -80,6 +81,11 @@ offset_bottom = 419.0
 text = "Return to Menu"
 
 [node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_8k1ke")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1653390165]
+stream = ExtResource("2_riwn1")
+volume_db = -11.05
+autoplay = true
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
