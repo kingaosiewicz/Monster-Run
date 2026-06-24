@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://drsfo72lnjge2" path="res://background.gd" id="2_68ter"]
 [ext_resource type="Texture2D" uid="uid://cy2osc120tu6p" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Background/back.png" id="3_ihiwf"]
 [ext_resource type="PackedScene" uid="uid://dp4kgqei37c4c" path="res://Player/Player.tscn" id="4_opxto"]
+[ext_resource type="AudioStream" uid="uid://bnheo1te23oah" path="res://weronika-assets/sounds/hurt.wav" id="5_50n6q"]
 [ext_resource type="PackedScene" uid="uid://bgx8htlstpb3t" path="res://frog.tscn" id="5_ihiwf"]
+[ext_resource type="AudioStream" uid="uid://cjpa2oyr4s4dj" path="res://weronika-assets/sounds/jump.wav" id="6_h45ge"]
 [ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="6_opxto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuq4e"]
@@ -314,6 +316,12 @@ position = Vector2(0, -13)
 [node name="Player" parent="Player" unique_id=1044194140 instance=ExtResource("4_opxto")]
 position = Vector2(135, 302)
 
+[node name="DzwiekBolu" type="AudioStreamPlayer" parent="Player/Player" unique_id=1527352525]
+stream = ExtResource("5_50n6q")
+
+[node name="DzwiekSkoku" type="AudioStreamPlayer" parent="Player/Player" unique_id=383760790]
+stream = ExtResource("6_h45ge")
+
 [node name="Mobs" type="Node2D" parent="." unique_id=2095351041]
 
 [node name="Frog" parent="Mobs" unique_id=184169380 instance=ExtResource("5_ihiwf")]
@@ -391,5 +399,9 @@ autostart = true
 stream = ExtResource("6_opxto")
 volume_db = -11.05
 autoplay = true
+
+[node name="Meta" type="Area2D" parent="." unique_id=57873119]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meta" unique_id=1897659906]
 
 [connection signal="timeout" from="Collectables/Timer" to="Collectables" method="_on_timer_timeout"]
