@@ -16,7 +16,7 @@ func _ready() -> void:
 	Game.time = 0.0          # Zerujemy zegar na starcie
 	Game.timer_active = true # Uruchamiamy odliczanie
 	Game.Gold = 0
-	Game.HP = 5
+	Game.playerHP = 10
 
 func _physics_process(delta: float) -> void:
 	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
