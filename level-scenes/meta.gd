@@ -36,6 +36,6 @@ func _on_body_entered(body: Node2D) -> void:
 		# 6. Wyświetlamy okienko (odznacz komentarze, gdy zbudujesz UI Podsumowania)
 		var panel = get_node("../UI/Podsumowanie")
 		panel.get_node("Wisienki").text
-		panel.get_node("Czas").text = "Time: " + str(snapped(Game.time, 0.1)) + "s (Record: " + str(snapped(current_best_time, 0.1)) + "s)"
-		panel.get_node("Diamenty").text = "Gold: " + str(Game.Gold) + " (Record: " + str(current_best_gold) + ")"
+		panel.get_node("Czas").text = "Time: " + str(snapped(Game.time, 0.1)) + "s\n(Record: " + str(snapped(current_best_time, 0.1)) + "s)"
+		panel.get_node("Diamenty").text = "Gold: " + str(Game.Gold) + "\n(Record: " + str(current_best_gold) + ")"
 		panel.visible = true

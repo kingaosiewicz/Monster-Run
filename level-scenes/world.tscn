@@ -237,6 +237,7 @@ func _get_future_y_position(x_pos: float, original_y: float) -> float:
 size = Vector2(37, 30)
 
 [node name="World" type="Node2D" unique_id=1652946520]
+position = Vector2(302, 12)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=2042380496]
 position = Vector2(0, -2)
