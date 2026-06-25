@@ -9,6 +9,9 @@ func _on_quit_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://level-scenes/LevelSelect.tscn")
+	
+func _on_table_pressed() -> void:
+	get_tree().change_scene_to_file("res://tabela_rekordow.tscn")	
 
 # TODO: Zrobić kolejne mapy jak ktoś przejdzie poziom i żeby zapisywało, które poziomy już przeszedłeś. Można potem dodać konta graczy? W kodzie jest stworzona
 # możliwość zapisywania HP i Golda, ale jeśli chcemy zrobić w formie poziomów to trzeba będzie zmienić logikę.

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cv3r4wu5l0evh"]
 
 [ext_resource type="Script" uid="uid://cjqhk2w7rwp3p" path="res://main.gd" id="1_fdf5a"]
+[ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="2_auqj3"]
 [ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_gr0vx"]
 [ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="3_gr0vx"]
 
@@ -8,18 +9,29 @@
 script = ExtResource("1_fdf5a")
 
 [node name="Play" type="Button" parent="." unique_id=1443625055]
-offset_left = 492.0
-offset_top = 164.0
-offset_right = 648.0
-offset_bottom = 245.0
+offset_left = 491.0
+offset_top = 154.0
+offset_right = 647.0
+offset_bottom = 235.0
+theme_override_fonts/font = ExtResource("2_auqj3")
 text = "Play"
 
 [node name="Quit" type="Button" parent="." unique_id=1621476591]
-offset_left = 491.0
-offset_top = 338.0
-offset_right = 647.0
-offset_bottom = 419.0
+offset_left = 490.0
+offset_top = 344.0
+offset_right = 646.0
+offset_bottom = 425.0
+theme_override_fonts/font = ExtResource("2_auqj3")
 text = "Quit"
+
+[node name="Table" type="Button" parent="." unique_id=2145040835]
+offset_left = 491.0
+offset_top = 250.0
+offset_right = 647.0
+offset_bottom = 331.0
+theme_override_fonts/font = ExtResource("2_auqj3")
+theme_override_font_sizes/font_size = 15
+text = "My Records"
 
 [node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_gr0vx")]
 
@@ -30,3 +42,4 @@ autoplay = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Table" to="." method="_on_table_pressed"]

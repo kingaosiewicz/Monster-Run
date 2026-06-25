@@ -218,7 +218,7 @@ func _on_timer_timeout() -> void:
 	var item
 	var base_y = 0.0 # Zmienna pomocnicza do trzymania Twoich oryginalnych wysokości
 	
-	if chance > 0.8: 
+	if chance > 0.7: 
 		item = Gem.instantiate()
 		base_y = rng.randi_range(230, 250)
 	else:
