@@ -8,9 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://bnheo1te23oah" path="res://weronika-assets/sounds/hurt.wav" id="5_q2inl"]
 [ext_resource type="AudioStream" uid="uid://cjpa2oyr4s4dj" path="res://weronika-assets/sounds/jump.wav" id="6_h0rto"]
 [ext_resource type="Script" uid="uid://cgdqng4e6kmr1" path="res://level-scenes/label_czas.gd" id="8_70gf8"]
+[ext_resource type="FontFile" uid="uid://clpqueflwyxna" path="res://weronika-assets/fonts/PixelOperator8.ttf" id="8_ldqxy"]
 [ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="8_vwplt"]
 [ext_resource type="Script" uid="uid://b1001lb7p0056" path="res://level-scenes/play_next_level.gd" id="9_70gf8"]
 [ext_resource type="Script" uid="uid://bvf6l2yd8xu0d" path="res://level-scenes/meta.gd" id="9_h0rto"]
+[ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="10_1gy41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61opt"]
 texture = ExtResource("1_hbeqx")
@@ -320,32 +322,34 @@ position = Vector2(2032, 273)
 [node name="UI" type="CanvasLayer" parent="." unique_id=65432702]
 
 [node name="HP" type="Label" parent="UI" unique_id=1821099252]
-offset_left = 16.0
-offset_right = 56.0
-offset_bottom = 28.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 36.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_ldqxy")
 theme_override_font_sizes/font_size = 24
 text = "HP"
 script = SubResource("GDScript_3icl5")
-metadata/_edit_use_anchors_ = true
 
 [node name="Gold" type="Label" parent="UI" unique_id=392117295]
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 56.0
-offset_bottom = 66.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_ldqxy")
 theme_override_font_sizes/font_size = 24
 text = "Gold"
 script = SubResource("GDScript_q2inl")
-metadata/_edit_use_anchors_ = true
 
 [node name="LabelCzas" type="Label" parent="UI" unique_id=1433423980]
-offset_left = 18.0
-offset_top = 66.0
-offset_right = 75.0
-offset_bottom = 100.0
+offset_left = 12.0
+offset_top = 74.0
+offset_right = 96.0
+offset_bottom = 108.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_ldqxy")
 theme_override_font_sizes/font_size = 24
 text = "Time"
 script = ExtResource("8_70gf8")
@@ -360,35 +364,42 @@ offset_bottom = 503.0
 
 [node name="Czas" type="Label" parent="UI/Podsumowanie" unique_id=2088600211]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 89.0
-offset_right = 380.0
-offset_bottom = 189.0
+offset_left = 61.0
+offset_top = 111.0
+offset_right = 360.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("8_ldqxy")
 theme_override_font_sizes/font_size = 34
 
 [node name="Wisienki" type="Label" parent="UI/Podsumowanie" unique_id=1073921083]
 layout_mode = 0
-offset_left = 195.0
-offset_top = 21.0
-offset_right = 371.0
-offset_bottom = 68.0
-theme_override_font_sizes/font_size = 34
+offset_left = 82.0
+offset_top = 38.0
+offset_right = 481.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("10_1gy41")
+theme_override_font_sizes/font_size = 42
 text = "Your Score"
 
 [node name="Diamenty" type="Label" parent="UI/Podsumowanie" unique_id=1126718723]
 layout_mode = 0
-offset_left = 94.0
-offset_top = 227.0
-offset_right = 410.0
-offset_bottom = 339.0
+offset_left = 69.0
+offset_top = 208.0
+offset_right = 385.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("8_ldqxy")
 theme_override_font_sizes/font_size = 34
 
 [node name="PlayNextLevel" type="Button" parent="UI/Podsumowanie" unique_id=387645168]
 layout_mode = 0
-offset_left = 211.0
-offset_top = 324.0
-offset_right = 367.0
-offset_bottom = 368.0
+offset_left = 206.0
+offset_top = 318.0
+offset_right = 402.0
+offset_bottom = 362.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_ldqxy")
 text = "Play Next Level"
 script = ExtResource("9_70gf8")
 
