@@ -24,27 +24,21 @@ func _physics_process(delta: float) -> void:
 
 	# DRABINKA — musi być PRZED grawitacją
 	if on_ladder:
-		print("vertical: ", Input.get_axis("ui_up", "ui_down"))
-		# Zatrzymujemy działanie grawitacji
-		velocity.y = 0 
-		
-		# Pozwalamy na wspinaczkę
+		velocity.y = 0
 		var vertical = Input.get_axis("ui_up", "ui_down")
 		if vertical != 0:
 			velocity.y = vertical * 150.0
 		else:
 			animation.play("Idle")
-		
-		# Pozwalamy graczowi na powolny ruch w poziomie, aby mógł zejść z drabiny
 		var horizontal = Input.get_axis("ui_left", "ui_right")
 		if horizontal != 0:
-			velocity.x = horizontal * 100.0 # Możesz dostosować tę prędkość
+			velocity.x = horizontal * 100.0
 		else:
 			velocity.x = 0
-			
+		var pos_przed = global_position.y
 		move_and_slide()
+		print("Y przed: ", pos_przed, "  Y po: ", global_position.y)
 		return
-
 
 	# Grawitacja
 	if not is_on_floor():
