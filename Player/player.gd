@@ -8,6 +8,7 @@ var knockback_power = 300.0
 
 var is_hurt = false
 var is_dead = false 
+var on_ladder = false
 
 @onready var animation = get_node("AnimationPlayer")
 @onready var game_over_screen = $CanvasLayer
@@ -108,6 +109,17 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.y > 0:
 		animation.play("Fall")
+		
+	if on_ladder:
+		velocity.y = 0  # wyłącz grawitację
+		var vertical = Input.get_axis("ui_up", "ui_down")
+		if vertical:
+			velocity.y = vertical * 150.0
+			animation.play("Idle")
+		else:
+			animation.play("Idle")
+		move_and_slide()
+		return
 
 	move_and_slide()
 
@@ -151,3 +163,11 @@ func die(knockback_dir: Vector2):
 	
 	Game.playerHP = 10 
 	get_tree().change_scene_to_file("res://level-scenes/main.tscn")
+	
+func _on_drabinka_body_entered(body):
+	if body == self:
+		on_ladder = true
+
+func _on_drabinka_body_exited(body):
+	if body == self:
+		on_ladder = false
