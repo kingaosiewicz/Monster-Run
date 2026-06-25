@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://c2280ula4mck8"]
 
-[ext_resource type="Texture2D" uid="uid://ckda8w8aq1m1w" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-1.png" id="1_krkyx"]
-[ext_resource type="Texture2D" uid="uid://dkbd565xhspmx" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-2.png" id="2_xyxyv"]
-[ext_resource type="Texture2D" uid="uid://btcbgfcfxxfa6" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-3.png" id="3_lpcv1"]
-[ext_resource type="Texture2D" uid="uid://d1n0sn0q04boc" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-4.png" id="4_ldky6"]
-[ext_resource type="Texture2D" uid="uid://dgo0arw3wi0yc" path="res://Sunny-land-files/Sunny-land-files/Assets/Misc/Sunnyland items/Sprites/gem/gem-5.png" id="5_jqbgs"]
+[ext_resource type="Texture2D" uid="uid://i21qchp0nkc5" path="res://weronika-assets/sprites/coin.png" id="1_inbcq"]
 [ext_resource type="AudioStream" uid="uid://d2wrg1pqd35um" path="res://weronika-assets/sounds/power_up.wav" id="6_xyxyv"]
 
 [sub_resource type="GDScript" id="GDScript_krkyx"]
@@ -26,26 +22,95 @@ func _on_body_entered(body: Node2D) -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdbqy"]
 radius = 6.0827627
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxpre"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7880"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krkyx"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyxyv"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpcv1"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldky6"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqbgs"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdbqy"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61qgc"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dd46"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dcam"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csadf"]
+atlas = ExtResource("1_inbcq")
+region = Rect2(176, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_61qgc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_krkyx")
+"texture": SubResource("AtlasTexture_gxpre")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_xyxyv")
+"texture": SubResource("AtlasTexture_k7880")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_lpcv1")
+"texture": SubResource("AtlasTexture_krkyx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ldky6")
+"texture": SubResource("AtlasTexture_xyxyv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_jqbgs")
+"texture": SubResource("AtlasTexture_lpcv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldky6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqbgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdbqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61qgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dd46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dcam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csadf")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -57,7 +122,7 @@ shape = SubResource("CircleShape2D_rdbqy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=133986288]
 sprite_frames = SubResource("SpriteFrames_61qgc")
-animation = &"Idle"
+animation = &"new_animation"
 
 [node name="DzwiekZbieraniaDiament" type="AudioStreamPlayer" parent="." unique_id=661908281]
 stream = ExtResource("6_xyxyv")
