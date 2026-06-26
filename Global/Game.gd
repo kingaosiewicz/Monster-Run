@@ -37,3 +37,9 @@ var best_gold_level5: int = 0
 
 var req_time_level5 = 55.0
 var req_gold_level5 = 25
+
+var best_time_level6: float = 99999.0
+var best_gold_level6: int = 0
+
+var req_time_level6 = 55.0
+var req_gold_level6 = 25
