@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bdhw1c75vild4" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/Foxy/Sprites/run/player-run-4.png" id="12_yifbt"]
 [ext_resource type="Texture2D" uid="uid://b2nc6y2i22lx5" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/Foxy/Sprites/run/player-run-5.png" id="13_s0mko"]
 [ext_resource type="Texture2D" uid="uid://do0a1s36g6mgx" path="res://Sunny-land-files/Sunny-land-files/Assets/Characters/Foxy/Sprites/run/player-run-6.png" id="14_hqjia"]
+[ext_resource type="FontFile" uid="uid://clpqueflwyxna" path="res://weronika-assets/fonts/PixelOperator8.ttf" id="15_3mea3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x70vp"]
 radius = 9.0
@@ -355,6 +356,7 @@ offset_right = 0.5
 offset_bottom = 34.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_fonts/font = ExtResource("15_3mea3")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1

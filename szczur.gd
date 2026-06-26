@@ -26,7 +26,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		if get_node("AnimatedSprite2D").animation != "Death":
 			get_node("AnimatedSprite2D").play("Idle")
-		velocity.x = SPEED_IDLE
+		velocity.x = -SPEED_IDLE
+		get_node("AnimatedSprite2D").flip_h = false
 		
 	move_and_slide()
 
@@ -48,15 +49,15 @@ func _on_player_death_body_entered(body: Node2D) -> void:
 		death()
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
-		if body.name == "Player":
-			if Game.is_invincible:
-				return
+	if body.name == "Player":
+		if Game.is_invincible:
+			return
 		Game.playerHP -= 3
 
 		
 		# Obliczamy wektor kierunku - z której strony żaba uderzyła gracza
 		var knockback_dir = (body.global_position - self.global_position).normalized()
-		
+			
 		# Zamiast death(), wywołujemy nową funkcję w graczu:
 		body.take_damage(knockback_dir)
 
