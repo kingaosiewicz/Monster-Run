@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="10_1caxc"]
 [ext_resource type="Script" path="res://level-scenes/play_next_level.gd" id="11_46fp5"]
 [ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="12_gjpim"]
-[ext_resource type="Script" path="res://level-scenes/meta.gd" id="13_wunwm"]
+[ext_resource type="Script" uid="uid://bvf6l2yd8xu0d" path="res://level-scenes/meta.gd" id="13_wunwm"]
 [ext_resource type="PackedScene" uid="uid://lwclj4rd3nod" path="res://Collectables/gems.tscn" id="15_onrts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61opt"]
