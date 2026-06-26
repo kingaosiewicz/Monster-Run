@@ -46,7 +46,10 @@ func _on_player_death_body_entered(body: Node2D) -> void:
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		if Game.is_invincible:
+			return
 		Game.playerHP -= 3
+
 		
 		# Obliczamy wektor kierunku - z której strony żaba uderzyła gracza
 		var knockback_dir = (body.global_position - self.global_position).normalized()

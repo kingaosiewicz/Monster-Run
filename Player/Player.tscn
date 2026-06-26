@@ -342,3 +342,19 @@ theme_override_font_sizes/font_size = 180
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PowerUpCanvas" type="CanvasLayer" parent="." unique_id=64836119]
+visible = false
+
+[node name="PowerUpLabel" type="Label" parent="PowerUpCanvas" unique_id=1403342681]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1

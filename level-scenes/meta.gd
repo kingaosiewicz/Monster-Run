@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var level_number: int = 1 
+@export var level_number: int = 5
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

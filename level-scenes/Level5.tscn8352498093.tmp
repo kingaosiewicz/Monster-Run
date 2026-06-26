@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="10_1caxc"]
 [ext_resource type="Script" path="res://level-scenes/play_next_level.gd" id="11_46fp5"]
 [ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="12_gjpim"]
-[ext_resource type="Script" uid="uid://bvf6l2yd8xu0d" path="res://level-scenes/meta.gd" id="13_wunwm"]
+[ext_resource type="Script" path="res://level-scenes/meta.gd" id="13_wunwm"]
 [ext_resource type="PackedScene" uid="uid://lwclj4rd3nod" path="res://Collectables/gems.tscn" id="15_onrts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61opt"]
@@ -623,10 +623,10 @@ shape = SubResource("RectangleShape2D_vwplt")
 
 [node name="Items" type="Node2D" parent="." unique_id=2042199449]
 
-[node name="Gems" parent="Items" unique_id=1322419952 instance=ExtResource("15_onrts")]
+[node name="Gem" parent="Items" unique_id=1322419952 instance=ExtResource("15_onrts")]
 position = Vector2(1834, 382)
 
-[node name="Gems2" parent="Items" unique_id=2127513814 instance=ExtResource("15_onrts")]
+[node name="Gem2" parent="Items" unique_id=2127513814 instance=ExtResource("15_onrts")]
 position = Vector2(1944, 193)
 
 [connection signal="pressed" from="UI/Podsumowanie/PlayNextLevel" to="UI/Podsumowanie/PlayNextLevel" method="_on_pressed"]
