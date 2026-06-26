@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 	# DRABINKA — musi być PRZED grawitacją
 	if on_ladder:
+		$CollisionShape2D.set_deferred("disabled", true)
 		velocity.y = 0
 		var vertical = Input.get_axis("ui_up", "ui_down")
 		if vertical != 0:
@@ -35,6 +36,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = horizontal * 100.0
 		else:
 			velocity.x = 0
+		move_and_slide()
 		var pos_przed = global_position.y
 		move_and_slide()
 		print("Y przed: ", pos_przed, "  Y po: ", global_position.y)
@@ -157,9 +159,11 @@ func _on_drabinka_body_entered(body):
 	print("ENTERED: ", body.name)
 	if body == self:
 		on_ladder = true
+		$CollisionShape2D.set_deferred("disabled", true)
 		print("ON LADDER TRUE")
 
 func _on_drabinka_body_exited(body):
+	$CollisionShape2D.set_deferred("disabled", false)
 	print("EXITED: ", body.name)
 	if body == self:
 		on_ladder = false
