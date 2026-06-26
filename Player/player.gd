@@ -12,7 +12,26 @@ var is_dead = false
 @onready var animation = get_node("AnimationPlayer")
 @onready var game_over_screen = $CanvasLayer
 
+func _ready() -> void:
+	Game.time = 0.0          # Zerujemy zegar na starcie
+	Game.timer_active = true # Uruchamiamy odliczanie
+	Game.Gold = 0
+	Game.playerHP = 10
+
 func _physics_process(delta: float) -> void:
+	# DODANE: Sprawdzanie wpadnięcia do wody / przepaści
+	# Jeśli lisek spadnie poniżej 800 pikseli na osi Y (możesz zwiększyć tę wartość, 
+	# jeśli Twoja mapa jest głębsza), ginie na miejscu bez odrzutu.
+	if not is_dead and not is_hurt and Game.timer_active:
+		Game.time += delta # Stoper nalicza sekundy
+	
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		animation.play("Jump")
+		$DzwiekSkoku.play() 
+	
+	# WYJŚCIE DO MENU (Klawisz ESC)
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://level-scenes/main.tscn")
 		
@@ -97,6 +116,8 @@ func _physics_process(delta: float) -> void:
 func take_damage(knockback_dir: Vector2):
 	if is_dead or is_hurt: 
 		return 
+		
+	$DzwiekBolu.play()
 	
 	if Game.playerHP <= 0:
 		die(knockback_dir) 
