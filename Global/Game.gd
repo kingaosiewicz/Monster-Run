@@ -5,6 +5,7 @@ var Gold = 0
 
 var timer_active: bool = true
 var time: float = 0.0
+var is_invincible = false
 
 # --- REKORDY DLA POZIOMÓW ---
 var best_time_level1: float = 99999.0
