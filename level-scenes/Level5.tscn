@@ -507,6 +507,9 @@ position = Vector2(2618, 240)
 [node name="Frog5" parent="Mobs" unique_id=1671560170 instance=ExtResource("7_3jpfx")]
 position = Vector2(2032, 273)
 
+[node name="Szczur" parent="Mobs" unique_id=1559599509 instance=ExtResource("13_e6msc")]
+position = Vector2(931, 278)
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=65432702]
 
 [node name="HP" type="Label" parent="UI" unique_id=1821099252]
@@ -603,15 +606,6 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_4aqdg")
 text = "Play Again"
 script = ExtResource("11_46fp5")
-
-[node name="Szczur" parent="UI" unique_id=1559599509 instance=ExtResource("13_e6msc")]
-position = Vector2(914, 316)
-
-[node name="Szczur2" parent="UI" unique_id=168405667 instance=ExtResource("13_e6msc")]
-position = Vector2(1770, 251)
-
-[node name="Szczur3" parent="UI" unique_id=1816603907 instance=ExtResource("13_e6msc")]
-position = Vector2(2363, 315)
 
 [node name="Collectables" type="Node2D" parent="." unique_id=2059089095]
 script = SubResource("GDScript_h0rto")
