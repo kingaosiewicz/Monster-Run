@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://drsfo72lnjge2" path="res://background.gd" id="1_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://cy2osc120tu6p" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Background/back.png" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bgx8htlstpb3t" path="res://frog.tscn" id="5_036b0"]
-[ext_resource type="Script" uid="uid://cgdqng4e6kmr1" path="res://level-scenes/label_czas.gd" id="6_kfwvs"]
-[ext_resource type="Script" uid="uid://bvf6l2yd8xu0d" path="res://level-scenes/meta.gd" id="7_fcfno"]
+[ext_resource type="Script" path="res://level-scenes/label_czas.gd" id="6_kfwvs"]
+[ext_resource type="Script" path="res://level-scenes/meta.gd" id="7_fcfno"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
 texture = ExtResource("1_aqk2v")

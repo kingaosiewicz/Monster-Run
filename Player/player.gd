@@ -11,6 +11,7 @@ var is_dead = false
 
 @onready var animation = get_node("AnimationPlayer")
 @onready var game_over_screen = $CanvasLayer
+@onready var power_up_label = $PowerUpCanvas/PowerUpLabel
 
 func _ready() -> void:
 	Game.time = 0.0          # Zerujemy zegar na starcie
@@ -132,6 +133,19 @@ func take_damage(knockback_dir: Vector2):
 	await get_tree().create_timer(0.6).timeout
 	is_hurt = false
 
+func start_power_up():
+	print("START POWER UP CALLED")
+	print("label: ", power_up_label)
+	print("size: ", power_up_label.size)
+	print("position: ", power_up_label.position)
+	$PowerUpCanvas.visible = true
+	power_up_label.visible = true
+	for i in range(10, 0, -1):
+		power_up_label.text = "Power-up! No damage for " + str(i) + "s"
+		await get_tree().create_timer(1.0).timeout
+	power_up_label.visible = false
+	$PowerUpCanvas.visible = false
+	Game.is_invincible = false
 
 # ZMIENIONA FUNKCJA ŚMIERCI
 func die(knockback_dir: Vector2):
