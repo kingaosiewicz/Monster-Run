@@ -156,7 +156,7 @@ animations = [{
 radius = 117.03845
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byod8"]
-size = Vector2(27.375, 17)
+size = Vector2(17.6875, 10.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cyyp"]
 size = Vector2(25, 7)
@@ -178,15 +178,15 @@ animation = &"Attack"
 [node name="PlayerDetection" type="Area2D" parent="." unique_id=885006712]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=553077660]
-position = Vector2(1, -9)
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_byod8")
+metadata/_edit_lock_ = true
 
 [node name="PlayerDeath" type="Area2D" parent="." unique_id=1813163748]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath" unique_id=1439004354]
-position = Vector2(-1, -12)
+position = Vector2(-1, -11)
 shape = SubResource("RectangleShape2D_byod8")
-metadata/_edit_lock_ = true
 
 [node name="PlayerCollision" type="Area2D" parent="." unique_id=1406674208]
 
