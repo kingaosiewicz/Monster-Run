@@ -7,8 +7,7 @@ const JUMP_VELOCITY = -400.0
 var knockback_power = 300.0
 
 var is_hurt = false
-var is_dead = false 
-var on_ladder = false
+var is_dead = false
 
 @onready var animation = get_node("AnimationPlayer")
 @onready var game_over_screen = $CanvasLayer
@@ -20,26 +19,6 @@ func _physics_process(delta: float) -> void:
 	if global_position.y > 400 and not is_dead:
 		Game.playerHP = 0
 		die(Vector2.ZERO)
-		return
-
-	# DRABINKA — musi być PRZED grawitacją
-	if on_ladder:
-		$CollisionShape2D.set_deferred("disabled", true)
-		velocity.y = 0
-		var vertical = Input.get_axis("ui_up", "ui_down")
-		if vertical != 0:
-			velocity.y = vertical * 150.0
-		else:
-			animation.play("Idle")
-		var horizontal = Input.get_axis("ui_left", "ui_right")
-		if horizontal != 0:
-			velocity.x = horizontal * 100.0
-		else:
-			velocity.x = 0
-		move_and_slide()
-		var pos_przed = global_position.y
-		move_and_slide()
-		print("Y przed: ", pos_przed, "  Y po: ", global_position.y)
 		return
 
 	# Grawitacja
@@ -154,16 +133,3 @@ func die(knockback_dir: Vector2):
 	
 	Game.playerHP = 10 
 	get_tree().change_scene_to_file("res://level-scenes/main.tscn")
-	
-func _on_drabinka_body_entered(body):
-	print("ENTERED: ", body.name)
-	if body == self:
-		on_ladder = true
-		$CollisionShape2D.set_deferred("disabled", true)
-		print("ON LADDER TRUE")
-
-func _on_drabinka_body_exited(body):
-	$CollisionShape2D.set_deferred("disabled", false)
-	print("EXITED: ", body.name)
-	if body == self:
-		on_ladder = false
