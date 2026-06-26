@@ -114,7 +114,7 @@ func _physics_process(delta: float) -> void:
 
 # ZMIENIONA FUNKCJA OTRZYMYWANIA OBRAŻEŃ
 func take_damage(knockback_dir: Vector2):
-	if is_dead or is_hurt: 
+	if is_dead or is_hurt or Game.is_invincible: 
 		return 
 		
 	$DzwiekBolu.play()

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2280ula4mck8"]
 
-[ext_resource type="Texture2D" uid="uid://i21qchp0nkc5" path="res://weronika-assets/sprites/coin.png" id="1_inbcq"]
-[ext_resource type="AudioStream" uid="uid://d2wrg1pqd35um" path="res://weronika-assets/sounds/power_up.wav" id="6_xyxyv"]
+[ext_resource type="Texture2D" uid="uid://i21qchp0nkc5" path="res://weronika-assets/sprites/coin.png" id="1_2a6ul"]
+[ext_resource type="AudioStream" uid="uid://d2wrg1pqd35um" path="res://weronika-assets/sounds/power_up.wav" id="2_8526y"]
 
 [sub_resource type="GDScript" id="GDScript_krkyx"]
 script/source = "extends Area2D
@@ -23,51 +23,51 @@ func _on_body_entered(body: Node2D) -> void:
 radius = 6.0827627
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxpre"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7880"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krkyx"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyxyv"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpcv1"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldky6"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqbgs"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdbqy"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61qgc"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dd46"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(144, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dcam"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(160, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csadf"]
-atlas = ExtResource("1_inbcq")
+atlas = ExtResource("1_2a6ul")
 region = Rect2(176, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_61qgc"]
@@ -125,6 +125,6 @@ sprite_frames = SubResource("SpriteFrames_61qgc")
 animation = &"new_animation"
 
 [node name="DzwiekZbieraniaDiament" type="AudioStreamPlayer" parent="." unique_id=661908281]
-stream = ExtResource("6_xyxyv")
+stream = ExtResource("2_8526y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
