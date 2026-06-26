@@ -343,7 +343,16 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowerUpLabel" type="Label" parent="CanvasLayer" unique_id=1224629605]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 0.25766784, 1, 1)
+[node name="PowerUpCanvas" type="CanvasLayer" parent="." unique_id=64836119]
+visible = false
+
+[node name="PowerUpLabel" type="Label" parent="PowerUpCanvas" unique_id=1403342681]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.82103467, 0, 0.0091498485, 1)
+theme_override_font_sizes/font_size = 180
+horizontal_alignment = 1
+vertical_alignment = 1

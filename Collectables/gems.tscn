@@ -22,7 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 		tween1.tween_property(self, \"modulate:a\", 0, 0.2)
 		tween.tween_callback(queue_free)
 		
-		var label = body.get_node(\"CanvasLayer/PowerUpLabel\")
+		var label = body.get_node(\"PowerUpCanvas/PowerUpLabel\")
 		label.visible = true
 		for i in range(10, 0, -1):
 			label.text = \"Power-up! No damage for \" + str(i) + \"s\"
