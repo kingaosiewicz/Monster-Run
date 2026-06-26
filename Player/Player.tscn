@@ -309,7 +309,7 @@ position = Vector2(-1, 5)
 shape = SubResource("CapsuleShape2D_x70vp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=285781514]
-position = Vector2(1, -1)
+position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_gv3fu")
 animation = &"Hurt"
 frame = 1

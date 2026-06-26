@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 var knockback_power = 300.0
 
 var is_hurt = false
-var is_dead = false 
+var is_dead = false
 
 @onready var animation = get_node("AnimationPlayer")
 @onready var game_over_screen = $CanvasLayer
@@ -33,24 +33,20 @@ func _physics_process(delta: float) -> void:
 	
 	# WYJŚCIE DO MENU (Klawisz ESC)
 	if Input.is_action_just_pressed("ui_cancel"):
-		# Upewnij się, że ścieżka poniżej prowadzi do Twojego menu głównego!
 		get_tree().change_scene_to_file("res://level-scenes/main.tscn")
-		
 		
 	if global_position.y > 400 and not is_dead:
 		Game.playerHP = 0
-		die(Vector2.ZERO) # Vector2.ZERO = śmierć w miejscu
+		die(Vector2.ZERO)
 		return
 
-	# Add the gravity.
+	# Grawitacja
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	if is_dead:
 		if is_on_floor():
-			# Pozwala liskowi odlecieć przy uderzeniu, ale zatrzymuje go po lądowaniu.
 			velocity.x = move_toward(velocity.x, 0, 2.0)
-			
 		move_and_slide()
 		return
 
@@ -58,24 +54,19 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		animation.play("Jump")
 	
-	# --- 1. SPRAWDZANIE NAWIERZCHNI (Lód i Piasek) ---
 	var on_ice = false
 	var on_sand = false
 	
 	if is_on_floor():
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
-			var collider = collision.get_collider() # Zapisujemy obiekt, z którym się zderzyliśmy
-			
-			# ZABEZPIECZENIE: Upewniamy się, że obiekt istnieje, zanim sprawdzimy jego nazwę!
+			var collider = collision.get_collider()
 			if collider != null:
 				var collider_name = collider.name
-				
 				if collider_name == "lod":
 					on_ice = true
 				elif collider_name == "piasek":
@@ -88,9 +79,7 @@ func _physics_process(delta: float) -> void:
 	elif direction == 1:
 		get_node("AnimatedSprite2D").flip_h = false
 		
-	# --- 2. RUCH LISKA (zależnie od nawierzchni) ---
 	if on_ice:
-		# LIS JEST NA LODZIE
 		if direction:
 			velocity.x = move_toward(velocity.x, direction * ICE_SPEED, 10.0) 
 			if velocity.y == 0:
@@ -100,17 +89,15 @@ func _physics_process(delta: float) -> void:
 			if velocity.y == 0:
 				animation.play("Idle")
 	elif on_sand:
-		# LIS JEST NA PIASKU
 		if direction:
-			velocity.x = direction * SAND_SPEED # Ograniczona, powolna prędkość
+			velocity.x = direction * SAND_SPEED
 			if velocity.y == 0:
 				animation.play("Run")
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED) # Zwykłe zatrzymanie
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 			if velocity.y == 0:
 				animation.play("Idle")
 	else:
-		# LIS JEST NA ZIEMI (Standardowy ruch)
 		if direction:
 			velocity.x = direction * SPEED
 			if velocity.y == 0:
