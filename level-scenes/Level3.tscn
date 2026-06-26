@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="10_gcxhx"]
 [ext_resource type="Script" uid="uid://b1001lb7p0056" path="res://level-scenes/play_next_level.gd" id="11_j61df"]
 [ext_resource type="Script" uid="uid://bvf6l2yd8xu0d" path="res://level-scenes/meta.gd" id="13_eo75j"]
+[ext_resource type="PackedScene" uid="uid://lwclj4rd3nod" path="res://Collectables/gems.tscn" id="14_6x00k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cuq4e"]
 texture = ExtResource("1_oauby")
@@ -491,6 +492,14 @@ level_number = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Meta" unique_id=1568747500]
 position = Vector2(7225, 307)
 shape = SubResource("RectangleShape2D_1yykj")
+
+[node name="Items" type="Node2D" parent="." unique_id=1119765784]
+
+[node name="Gems" parent="Items" unique_id=1322419952 instance=ExtResource("14_6x00k")]
+position = Vector2(3897, 112)
+
+[node name="Gems2" parent="Items" unique_id=1193344276 instance=ExtResource("14_6x00k")]
+position = Vector2(5434, 257)
 
 [connection signal="pressed" from="UI/Podsumowanie/PlayNextLevel" to="UI/Podsumowanie/PlayNextLevel" method="_on_pressed"]
 [connection signal="pressed" from="UI/Podsumowanie/PlayAgain" to="UI/Podsumowanie/PlayAgain" method="_on_pressed"]
