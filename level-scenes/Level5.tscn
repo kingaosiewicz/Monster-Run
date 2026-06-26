@@ -623,10 +623,10 @@ shape = SubResource("RectangleShape2D_vwplt")
 
 [node name="Items" type="Node2D" parent="." unique_id=2042199449]
 
-[node name="Gem" parent="Items" unique_id=1322419952 instance=ExtResource("15_onrts")]
+[node name="Gems" parent="Items" unique_id=1322419952 instance=ExtResource("15_onrts")]
 position = Vector2(1834, 382)
 
-[node name="Gem2" parent="Items" unique_id=2127513814 instance=ExtResource("15_onrts")]
+[node name="Gems2" parent="Items" unique_id=2127513814 instance=ExtResource("15_onrts")]
 position = Vector2(1944, 193)
 
 [connection signal="pressed" from="UI/Podsumowanie/PlayNextLevel" to="UI/Podsumowanie/PlayNextLevel" method="_on_pressed"]
