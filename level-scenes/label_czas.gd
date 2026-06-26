@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.text = "Czas: " + str(snapped(Game.time, 0.1)) + "s"
+	self.text = "Time: " + str(snapped(Game.time, 0.1)) + "s"

@@ -4,9 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dp4kgqei37c4c" path="res://Player/Player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://drsfo72lnjge2" path="res://background.gd" id="1_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://cy2osc120tu6p" path="res://Sunny-land-files/Sunny-land-files/Assets/environment/Background/back.png" id="2_aqk2v"]
+[ext_resource type="AudioStream" uid="uid://bnheo1te23oah" path="res://weronika-assets/sounds/hurt.wav" id="5_0lpdq"]
 [ext_resource type="PackedScene" uid="uid://bgx8htlstpb3t" path="res://frog.tscn" id="5_036b0"]
-[ext_resource type="Script" path="res://level-scenes/label_czas.gd" id="6_kfwvs"]
-[ext_resource type="Script" path="res://level-scenes/meta.gd" id="7_fcfno"]
+[ext_resource type="AudioStream" uid="uid://cjpa2oyr4s4dj" path="res://weronika-assets/sounds/jump.wav" id="6_1masr"]
+[ext_resource type="Script" uid="uid://cgdqng4e6kmr1" path="res://level-scenes/label_czas.gd" id="6_kfwvs"]
+[ext_resource type="Script" uid="uid://bvf6l2yd8xu0d" path="res://level-scenes/meta.gd" id="7_fcfno"]
+[ext_resource type="FontFile" uid="uid://clpqueflwyxna" path="res://weronika-assets/fonts/PixelOperator8.ttf" id="8_jx4fd"]
+[ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="10_pfedt"]
+[ext_resource type="Script" uid="uid://b1001lb7p0056" path="res://level-scenes/play_next_level.gd" id="11_6sbap"]
+[ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="13_pfedt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_036b0"]
 texture = ExtResource("1_aqk2v")
@@ -294,7 +300,7 @@ func _get_future_y_position(x_pos: float, original_y: float) -> float:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u46hv"]
-size = Vector2(37, 30)
+size = Vector2(61, 45)
 
 [node name="World" type="Node2D" unique_id=1652946520]
 position = Vector2(302, 12)
@@ -321,6 +327,12 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="Player" unique_id=1044194140 instance=ExtResource("1_f3sb7")]
 position = Vector2(258, 188)
+
+[node name="DzwiekBolu" type="AudioStreamPlayer" parent="Player/Player" unique_id=765676982]
+stream = ExtResource("5_0lpdq")
+
+[node name="DzwiekSkoku" type="AudioStreamPlayer" parent="Player/Player" unique_id=561402481]
+stream = ExtResource("6_1masr")
 
 [node name="Mobs" type="Node2D" parent="." unique_id=74791002]
 
@@ -360,33 +372,99 @@ position = Vector2(522, 156)
 [node name="UI" type="CanvasLayer" parent="." unique_id=916280145]
 
 [node name="HP" type="Label" parent="UI" unique_id=191993594]
-offset_left = 16.0
-offset_right = 56.0
-offset_bottom = 28.0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 57.0
+offset_bottom = 39.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_jx4fd")
 theme_override_font_sizes/font_size = 24
 text = "HP"
 script = SubResource("GDScript_036b0")
 
 [node name="Gold" type="Label" parent="UI" unique_id=1378809815]
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 56.0
-offset_bottom = 66.0
+offset_left = 15.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 77.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_jx4fd")
 theme_override_font_sizes/font_size = 24
 text = "Gold"
 script = SubResource("GDScript_dwbse")
 
 [node name="LabelCzas" type="Label" parent="UI" unique_id=324042086]
-offset_left = 18.0
-offset_top = 66.0
-offset_right = 75.0
-offset_bottom = 100.0
+offset_left = 15.0
+offset_top = 74.0
+offset_right = 99.0
+offset_bottom = 108.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_jx4fd")
 theme_override_font_sizes/font_size = 24
 text = "Time"
 script = ExtResource("6_kfwvs")
+
+[node name="Podsumowanie" type="Panel" parent="UI" unique_id=1827635655]
+visible = false
+light_mask = 2
+offset_left = 283.0
+offset_top = 119.0
+offset_right = 846.0
+offset_bottom = 503.0
+
+[node name="Czas" type="Label" parent="UI/Podsumowanie" unique_id=1564128421]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 111.0
+offset_right = 360.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("8_jx4fd")
+theme_override_font_sizes/font_size = 34
+
+[node name="Wisienki" type="Label" parent="UI/Podsumowanie" unique_id=695169036]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 38.0
+offset_right = 481.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("10_pfedt")
+theme_override_font_sizes/font_size = 42
+text = "Your Score"
+
+[node name="Diamenty" type="Label" parent="UI/Podsumowanie" unique_id=2139853689]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 208.0
+offset_right = 385.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("8_jx4fd")
+theme_override_font_sizes/font_size = 34
+
+[node name="PlayNextLevel" type="Button" parent="UI/Podsumowanie" unique_id=154698528]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 318.0
+offset_right = 517.0
+offset_bottom = 362.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_jx4fd")
+text = "Play Next Level"
+script = ExtResource("11_6sbap")
+
+[node name="PlayAgain" type="Button" parent="UI/Podsumowanie" unique_id=1210555764]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 319.0
+offset_right = 243.0
+offset_bottom = 363.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_jx4fd")
+text = "Play Again"
+script = ExtResource("11_6sbap")
 
 [node name="Collectables" type="Node2D" parent="." unique_id=1802235486]
 script = SubResource("GDScript_pkg7o")
@@ -396,9 +474,18 @@ autostart = true
 
 [node name="Meta" type="Area2D" parent="." unique_id=2027403826]
 script = ExtResource("7_fcfno")
+level_number = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Meta" unique_id=2117137638]
-position = Vector2(134, 77)
+position = Vector2(5889.5, 86.5)
 shape = SubResource("RectangleShape2D_u46hv")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=52836660]
+stream = ExtResource("13_pfedt")
+volume_db = -11.05
+autoplay = true
+
+[connection signal="pressed" from="UI/Podsumowanie/PlayNextLevel" to="UI/Podsumowanie/PlayNextLevel" method="_on_pressed"]
+[connection signal="pressed" from="UI/Podsumowanie/PlayAgain" to="UI/Podsumowanie/PlayAgain" method="_on_pressed"]
 [connection signal="timeout" from="Collectables/Timer" to="Collectables" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Meta" to="Meta" method="_on_body_entered"]
