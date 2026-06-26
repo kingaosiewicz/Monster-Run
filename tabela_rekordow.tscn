@@ -1,0 +1,245 @@
+[gd_scene format=3 uid="uid://b1n45f5o31do5"]
+
+[ext_resource type="Script" uid="uid://dhbhkugi4ib3e" path="res://tabela_rekordow.gd" id="1_25qdw"]
+[ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="1_lvnvl"]
+[ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="2_w8t6b"]
+[ext_resource type="FontFile" uid="uid://clpqueflwyxna" path="res://weronika-assets/fonts/PixelOperator8.ttf" id="3_18m2e"]
+[ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="4_18m2e"]
+
+[node name="TabelaRekordow" type="Control" unique_id=807276667]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_25qdw")
+
+[node name="Panel" type="Panel" parent="." unique_id=320521180]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 101.0
+offset_right = 687.0
+offset_bottom = 463.0
+
+[node name="Panel2" type="Panel" parent="." unique_id=1406754128]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 101.0
+offset_right = 980.0
+offset_bottom = 464.0
+
+[node name="Wymagania" type="Label" parent="Panel2" unique_id=291619790]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 58.0
+offset_right = 260.0
+offset_bottom = 287.0
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ToUnlock" type="Label" parent="Panel2" unique_id=1995770527]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 13.0
+offset_right = 298.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("4_18m2e")
+theme_override_font_sizes/font_size = 14
+text = "To Unlock Next Level"
+
+[node name="Tabela" type="GridContainer" parent="." unique_id=1275842146]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 115.0
+offset_right = 679.0
+offset_bottom = 450.0
+columns = 3
+
+[node name="Poziom" type="Label" parent="Tabela" unique_id=968608349]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("4_18m2e")
+theme_override_font_sizes/font_size = 20
+text = "Level"
+
+[node name="Czas" type="Label" parent="Tabela" unique_id=536276128]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("4_18m2e")
+theme_override_font_sizes/font_size = 20
+text = "My Time"
+
+[node name="Gold" type="Label" parent="Tabela" unique_id=2132524478]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("4_18m2e")
+theme_override_font_sizes/font_size = 20
+text = "My Gold"
+
+[node name="Level1" type="Label" parent="Tabela" unique_id=686089279]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Level 1"
+
+[node name="Time1" type="Label" parent="Tabela" unique_id=2004367339]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Time:"
+
+[node name="Gold1" type="Label" parent="Tabela" unique_id=1447684511]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Gold:"
+
+[node name="Level2" type="Label" parent="Tabela" unique_id=1256056420]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Level 2"
+
+[node name="Time2" type="Label" parent="Tabela" unique_id=347153597]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Time:"
+
+[node name="Gold2" type="Label" parent="Tabela" unique_id=136534899]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Gold:"
+
+[node name="Level3" type="Label" parent="Tabela" unique_id=1556522055]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Level 3"
+
+[node name="Time3" type="Label" parent="Tabela" unique_id=2043118709]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Time:"
+
+[node name="Gold3" type="Label" parent="Tabela" unique_id=9562278]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Gold:"
+
+[node name="Level4" type="Label" parent="Tabela" unique_id=2015025778]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Level 4"
+
+[node name="Time4" type="Label" parent="Tabela" unique_id=1050119060]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Time:"
+
+[node name="Gold4" type="Label" parent="Tabela" unique_id=1414784769]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Gold:"
+
+[node name="Level5" type="Label" parent="Tabela" unique_id=1806542338]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Level 5"
+
+[node name="Time5" type="Label" parent="Tabela" unique_id=1920833649]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Time:"
+
+[node name="Gold5" type="Label" parent="Tabela" unique_id=2032576445]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Gold:"
+
+[node name="Level6" type="Label" parent="Tabela" unique_id=320576479]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Level 6"
+
+[node name="Time6" type="Label" parent="Tabela" unique_id=1798882427]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Time:"
+
+[node name="Gold6" type="Label" parent="Tabela" unique_id=1100515907]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_fonts/font = ExtResource("3_18m2e")
+theme_override_font_sizes/font_size = 17
+text = "Gold:"
+
+[node name="Background" parent="." unique_id=574287586 instance=ExtResource("1_lvnvl")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1253670072]
+stream = ExtResource("2_w8t6b")
+volume_db = -11.05
+autoplay = true
+
+[node name="Return" type="Button" parent="." unique_id=1320275012]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 497.0
+offset_right = 683.0
+offset_bottom = 578.0
+theme_override_fonts/font = ExtResource("4_18m2e")
+text = "Return to Menu"
+
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

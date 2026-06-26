@@ -218,7 +218,7 @@ func _on_timer_timeout() -> void:
 	var item
 	var base_y = 0.0 # Zmienna pomocnicza do trzymania Twoich oryginalnych wysokości
 	
-	if chance > 0.8: 
+	if chance > 0.7: 
 		item = Gem.instantiate()
 		base_y = rng.randi_range(230, 250)
 	else:
@@ -392,15 +392,28 @@ theme_override_font_sizes/font_size = 34
 
 [node name="PlayNextLevel" type="Button" parent="UI/Podsumowanie" unique_id=387645168]
 layout_mode = 0
-offset_left = 206.0
+offset_left = 321.0
 offset_top = 318.0
-offset_right = 402.0
+offset_right = 517.0
 offset_bottom = 362.0
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_ldqxy")
 text = "Play Next Level"
+script = ExtResource("9_70gf8")
+
+[node name="PlayAgain" type="Button" parent="UI/Podsumowanie" unique_id=1294884552]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 319.0
+offset_right = 243.0
+offset_bottom = 363.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_ldqxy")
+text = "Play Again"
 script = ExtResource("9_70gf8")
 
 [node name="Collectables" type="Node2D" parent="." unique_id=2059089095]
@@ -422,5 +435,6 @@ position = Vector2(3113.25, 307.25)
 shape = SubResource("RectangleShape2D_vwplt")
 
 [connection signal="pressed" from="UI/Podsumowanie/PlayNextLevel" to="UI/Podsumowanie/PlayNextLevel" method="_on_pressed"]
+[connection signal="pressed" from="UI/Podsumowanie/PlayAgain" to="UI/Podsumowanie/PlayAgain" method="_on_pressed"]
 [connection signal="timeout" from="Collectables/Timer" to="Collectables" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Meta" to="Meta" method="_on_body_entered"]

@@ -1,10 +1,33 @@
 [gd_scene format=3 uid="uid://b4t3rkgfmm4dw"]
 
+[ext_resource type="FontFile" uid="uid://c36ah3n4rwa00" path="res://weronika-assets/fonts/PixelOperator8-Bold.ttf" id="1_8k1ke"]
 [ext_resource type="PackedScene" uid="uid://bvfng15qrwg2r" path="res://background.tscn" id="2_8k1ke"]
 [ext_resource type="AudioStream" uid="uid://davekvtv7g4j6" path="res://weronika-assets/music/time_for_adventure.mp3" id="2_riwn1"]
 
 [sub_resource type="GDScript" id="GDScript_oaddd"]
 script/source = "extends Node2D
+#func _ready() -> void:
+	## Pętla sprawdza guziki od Poziomu 2 do 6
+	#for i in range(2, 7):
+		#var button = get_node_or_null(\"Level\" + str(i)) 
+		#
+		#if button != null:
+			## Pobieramy rekordy i wymagania z POPRZEDNIEGO poziomu (i - 1)
+			#var best_time = Game.get(\"best_time_level\" + str(i - 1))
+			#var best_gold = Game.get(\"best_gold_level\" + str(i - 1))
+			#var req_time = Game.get(\"req_time_level\" + str(i - 1))
+			#var req_gold = Game.get(\"req_gold_level\" + str(i - 1))
+			#
+			#var odblokowany = false
+			#
+			## Sprawdzamy, czy wszystkie warunki zostały spełnione
+			#if req_time != null and req_gold != null:
+				#if best_time != null and best_time > 0 and best_time <= req_time:
+					#if best_gold != null and best_gold >= req_gold:
+						#odblokowany = true
+			#
+			## Blokujemy lub odblokowujemy guzik zależnie od wyniku
+			#button.disabled = not odblokowany
 
 func _on_level_1_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://level-scenes/Level1.tscn\")
@@ -36,6 +59,7 @@ offset_left = 48.0
 offset_top = 168.0
 offset_right = 208.0
 offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Level 1"
 
 [node name="Level2" type="Button" parent="." unique_id=1551484544]
@@ -43,6 +67,7 @@ offset_left = 232.0
 offset_top = 168.0
 offset_right = 388.0
 offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Level 2"
 
 [node name="Level3" type="Button" parent="." unique_id=2014384314]
@@ -50,6 +75,7 @@ offset_left = 408.0
 offset_top = 168.0
 offset_right = 564.0
 offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Level 3"
 
 [node name="Level4" type="Button" parent="." unique_id=1080688072]
@@ -57,6 +83,7 @@ offset_left = 584.0
 offset_top = 169.0
 offset_right = 740.0
 offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Level 4"
 
 [node name="Level5" type="Button" parent="." unique_id=1518850562]
@@ -64,6 +91,7 @@ offset_left = 766.0
 offset_top = 170.0
 offset_right = 922.0
 offset_bottom = 251.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Level 5"
 
 [node name="Level6" type="Button" parent="." unique_id=1355803910]
@@ -71,13 +99,15 @@ offset_left = 947.0
 offset_top = 168.0
 offset_right = 1103.0
 offset_bottom = 249.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Level 6"
 
 [node name="Return" type="Button" parent="." unique_id=1621476591]
-offset_left = 491.0
+offset_left = 464.0
 offset_top = 338.0
-offset_right = 647.0
+offset_right = 678.0
 offset_bottom = 419.0
+theme_override_fonts/font = ExtResource("1_8k1ke")
 text = "Return to Menu"
 
 [node name="Background" parent="." unique_id=574287586 instance=ExtResource("2_8k1ke")]
